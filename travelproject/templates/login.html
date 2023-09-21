@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="{% static 'css/register.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body style="background-image: url({% static 'images/slider-01.jpg' %}); background-repeat: no-repeat;
+            background-size: 100%;width:100%; height:100%;">
+    <div class="transbox">
+
+        <div class="form-container">
+
+             <form action="login" method="POST" style="box-shadow: 0 0 5px 0;
+            background: inherit;
+            backdrop-filter: blur(10px);
+            margin-left:5%; width:400px;">
+                 {% csrf_token %}
+                 <h2 style="margin-left:35%;">Login Form</h2>
+                 <div class="form-outline mb-4" style="margin-left:10%;">
+                  <input type="text" name="username" class="form-control" style="height:20px;border-radius:4px;" />
+                  <label class="form-label">&nbsp;&nbsp;<b>User Name</b></label>
+                </div>
+                 <br>
+                <div class="form-outline mb-4" style="margin-left:10%;">
+                  <input type="password" name="password" class="form-control form-control-lg" style="height:20px;border-radius:4px;" />
+                  <label class="form-label">&nbsp;&nbsp;<b>Password</b></label>
+                </div><br>
+                 <input type="submit" style="margin-left:40%;width:20%;height:30px;color:white;background:black;font-weight:bold;"><br>
+                 <br>
+                 <div style="margin-left:100px;">
+        {% for msg in messages %}
+        <h2 class="justify-content-center">{{msg}}</h2>
+        {% endfor %}
+    </div>
+             </form>
+        </div>
+    </div>
+</body>
+</html>
